@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30BC022F-7C55-41FA-9CFB-492010918C65}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GSM.Dominio</RootNamespace>
+    <AssemblyName>GSM.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gsmlog.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entidades\Acondicionamento.cs" />
+    <Compile Include="Entidades\Balanca.cs" />
+    <Compile Include="Entidades\Cor.cs" />
+    <Compile Include="Entidades\Deposito.cs" />
+    <Compile Include="Entidades\PedidoItem.cs" />
+    <Compile Include="Entidades\RomaneioItem.cs" />
+    <Compile Include="Entidades\LinhaProduto.cs" />
+    <Compile Include="Entidades\Maquina.cs" />
+    <Compile Include="Entidades\Operador.cs" />
+    <Compile Include="Entidades\OrdemAcabamento.cs" />
+    <Compile Include="Entidades\OrdemAcabamentoPeca.cs" />
+    <Compile Include="Entidades\OrdemAcabamentoPedido.cs" />
+    <Compile Include="Entidades\OrdemMalharia.cs" />
+    <Compile Include="Entidades\OrdemMalhariaPedido.cs" />
+    <Compile Include="Entidades\ParametroSistema.cs" />
+    <Compile Include="Entidades\Peca.cs" />
+    <Compile Include="Entidades\Pedido.cs" />
+    <Compile Include="Entidades\Pessoa.cs" />
+    <Compile Include="Entidades\Produto.cs" />
+    <Compile Include="Entidades\Romaneio.cs" />
+    <Compile Include="Entidades\UnidadeMedida.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Enuns\eSituacaoAtendimento.cs" />
+    <Compile Include="Enuns\eTipoAtendimento.cs" />
+    <Compile Include="Enuns\eTipoFrequencia.cs" />
+    <Compile Include="Enuns\eTipoGeracao.cs" />
+    <Compile Include="Interfaces\Aplicacao\IUsuarioAplicacao.cs" />
+    <Compile Include="Interfaces\Aplicacao\IAplicacaoBase.cs" />
+    <Compile Include="Interfaces\Respositorios\IUsuarioRepositorio.cs" />
+    <Compile Include="Interfaces\Respositorios\IRepositorioBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gsmlog.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

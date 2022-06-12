@@ -1,0 +1,76 @@
+﻿@model WEBTextil.Web.ViewModels.UsuarioViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WEBTextil Log | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title - WEBTextil Log</title>
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/WEBTextilcss")
+
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="@Url.Action("Index", "Home")" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>WEBTextil</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>WEBTextil</b>Log</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Login</p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <hr />
+                        <div class="form-group has-feedback">
+                            @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control", @placeholder = "Login" } })
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group  has-feedback">
+                            @Html.PasswordFor(model => model.Senha, new { @class = "form-control", @placeholder = "Senha" })
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Login" class="btn btn-primary btn-block btn-flat" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

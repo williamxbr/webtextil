@@ -1,0 +1,64 @@
+﻿@{
+    string version = typeof(WEBTextil.Web.MvcApplication).Assembly.GetName().Version.ToString();
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>WEBTextil Web - versão @version</title>
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/WEBTextilcss")
+
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/img/WEBTextil_logo.svg" alt="WEBTextil Log">
+        </div>
+
+
+        @Html.Partial("_Header")
+
+        @Html.Partial("_Sidebar")
+
+        @RenderBody()
+
+        @Html.Partial("_Footer")
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    @Html.Partial("_UrlActions")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}?nocache=" + version + "\"></script>", "~/bundles/WEBTextil")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

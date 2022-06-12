@@ -1,0 +1,323 @@
+﻿
+@{
+    ViewBag.Title = "ListarFilial";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>
+                        Lista de Filials
+                    </h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">@Html.ActionLink("Filial", "Index")</li>
+                        <li class="breadcrumb-item active">Listagem</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Empresa: @ViewBag.Empresa.Nome </label>
+                        </div>
+                        <div class="card-body">
+                            <div id="listaFilial"></div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" onclick="NovaFilial();">Nova Filial</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modalCadastroFilial">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="tituloModal" class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-primary">
+                            <div class="card-body">
+                                <input type="hidden" id="FilialId" />
+                                <input type="hidden" id="EmpresaId" />
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <label>Numero</label>
+                                        <input id="NumeroFilial" class="form-control" type="number" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>DV</label>
+                                        <input id="DV" class="form-control" type="number" />
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>Nome</label>
+                                        <input id="Nome" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label>Ativo</label>
+                                        <input id="Ativo" class="form-control" type="checkbox" />
+                                    </div>
+                                </div>
+
+
+                                <input type="hidden" id="EnderecoId" />
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <label>Alias</label>
+                                            <input id="Alias" class="form-control" type="text" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Cep</label>
+                                            <input id="Cep" class="form-control" type="text" onblur="enderecoControle.CarregarDadosCep(this.value)" />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Logradouro</label>
+                                            <input id="Logradouro" class="form-control" type="text" />
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label>Numero</label>
+                                            <input id="Numero" class="form-control" type="text" />
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <label>Complemento</label>
+                                            <input id="Complemento" class="form-control" type="text" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Bairro</label>
+                                            <input id="Bairro" class="form-control" type="text" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Cidade</label>
+                                            <select class="form-control" id="CidadeId"></select>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label>Estado</label>
+                                            <select class="form-control" id="EstadoId" onchange="cidadeControle.PreencherComboCidadeEstado($('#CidadeId'),this);"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="filialControle.GravarFilial(false);">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modalCadastroFrequencia">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Frequencia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-primary">
+                            <div class="card-body">
+                                <input type="hidden" id="FilialId" />
+                                <input type="hidden" id="Valor" />
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <label>Tipo</label>
+                                        <select class="form-control" id="TipoFrequencia" onchange="changeTipoFrequencia(this);">
+                                            <option value="-1">Escolha o tipo de frequencia</option>
+                                            <option value="0">Semanal</option>
+                                            <option value="1">Diario</option>
+                                            <option value="2">Fixo</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-8" id="Semanal">
+                                        <div class="form-group">
+                                            <label>Escolha os dias</label>
+                                            <select id="tipoSemanal" multiple="multiple" class="select2" style="width: 100%;">
+                                                <option value="2">Segunda</option>
+                                                <option value="3">Terça</option>
+                                                <option value="4">Quarta</option>
+                                                <option value="5">Quinta</option>
+                                                <option value="6">Sexta</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8" id="Diario">
+                                        <div class="form-group">
+                                            <label>Escolha os dias</label>
+                                            <select id="tipoDiario" multiple="multiple" class="select2" style="width: 100%;">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                                <option>15</option>
+                                                <option>16</option>
+                                                <option>17</option>
+                                                <option>18</option>
+                                                <option>19</option>
+                                                <option>20</option>
+                                                <option>21</option>
+                                                <option>22</option>
+                                                <option>23</option>
+                                                <option>24</option>
+                                                <option>25</option>
+                                                <option>26</option>
+                                                <option>27</option>
+                                                <option>28</option>
+                                                <option>29</option>
+                                                <option>30</option>
+                                                <option>31</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="Fixo" class="col-md-8">
+                                        <label>Date:</label>
+                                        <div class="input-group date" id="datafixa" data-target-input="nearest">
+                                            <input type="text" id="datetimeFixa" class="form-control datetimepicker-input" data-target="#datafixa" />
+                                            <div class="input-group-append" data-target="#datafixa" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="GravarFrequencia();">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+
+        function GravarFrequencia() {
+            var id = parseInt($("#TipoFrequencia").val());
+            var _valor = "";
+            if (id === 0) {
+                _valor = $("#tipoSemanal").val().toString();
+            }
+
+            if (id === 1) {
+                _valor = $("#tipoDiario").val().toString();
+            }
+
+            if (id === 2) {
+                _valor = $("#datetimeFixa").val().toString();
+            }
+
+            $("#Valor").val(_valor);
+
+            frequenciaControle.GravarFrequencia();
+
+        }
+
+        function changeTipoFrequencia(elem) {
+            var id = parseInt(elem.value);
+            if (id === 0) {
+                $("#Semanal").show();
+            } else {
+                $("#Semanal").hide();
+            }
+
+            if (id === 1) {
+                $("#Diario").show();
+            } else {
+                $("#Diario").hide();
+            }
+
+            if (id === 2) {
+                $("#Fixo").show();
+            } else {
+                $("#Fixo").hide();
+            }
+
+        }
+
+        function OpenModal() {
+            $("#tituloModal").html("Editar Filial");
+            $('#modalCadastroFilial').modal('show');
+        }
+
+        function CloseModal() {
+            $('#modalCadastroFilial').modal('hide');
+        }
+
+        function CloseModalFrequencia() {
+            filialControle.ListagemFilial(@ViewBag.Empresa.EmpresaId);
+            $('#modalCadastroFrequencia').modal('hide');
+        }
+
+
+        function NovaFilial() {
+            var empresaId = @ViewBag.Empresa.EmpresaId;
+            filialControle.LimparFilial(empresaId);
+            $("#tituloModal").html("Nova Filial");
+            $('#modalCadastroFilial').modal('show');
+        }
+
+
+        $(document).ready(function () {
+            filialControle.ListagemFilial(@ViewBag.Empresa.EmpresaId);
+            var elem = $("#EstadoId");
+            estadoControle.PreencherCombo(elem);
+
+            $('.select2').select2({
+                theme: 'classic'
+            });
+            $("#Semanal").hide();
+            $("#Diario").hide();
+            $("#Fixo").hide();
+
+            $('#datafixa').datetimepicker({ icons: { time: 'far fa-clock' } });
+        });
+    </script>
+}
+

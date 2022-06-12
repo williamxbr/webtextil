@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>
+                        Pagina Inicial
+                    </h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            @Html.ActionLink("HOME", "Index", "Home")
+                        </li>
+                        <li class="breadcrumb-item active">Usuario</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="small-box bg-gradient-secondary">
+                        <div class="inner">
+                            <h3>Lista</h3>
+                            <p>Listagem do cadastro de usuarios</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-list"></i>
+                        </div>
+                        <a href="@Url.Action("Lista")" class="small-box-footer">Clique <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>Novo</h3>
+                            <p>Cadastrar novo usuario</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-personadd"></i>
+                        </div>
+                        <a href="@Url.Action("Criar")" class="small-box-footer">Clique aqui <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

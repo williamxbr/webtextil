@@ -1,0 +1,46 @@
+﻿<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar sidebar-light-danger elevation-4">
+
+    <a href="@Url.Action("Index", "Home")" class="brand-link">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>G</b>L</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="brand-text font-weight-light"><b>WEBTextil</b>Log</span>
+    </a>
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar">
+        <!-- Sidebar user panel -->
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="@((User as Identidade).Imagem)" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">@((User as Identidade).NomeCompleto)</a>
+            </div>
+        </div>
+
+        <nav class="mt-2">
+
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-bars"></i>
+                        <p>
+                            Sistema
+                            <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Usuario/Index"><i class="fa fa-circle nav-icon"></i> Usuarios</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <!-- /.sidebar -->
+</aside>

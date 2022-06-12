@@ -1,0 +1,137 @@
+﻿@model WEBTextil.Dominio.Entidades.Usuario
+
+@{
+    ViewBag.Title = "Criar";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>
+                        Novo usuario
+                    </h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">@Html.ActionLink("Usuario", "Index")</li>
+                        <li class="breadcrumb-item active">Novo</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card card-primary">
+                        <div class="card-body">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    <div class="col">
+                                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col">
+                                            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control make-pass" } })
+                                            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.CheckBoxFor(model => model.Ativo)
+                                            @Html.ValidationMessageFor(model => model.Ativo, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col">
+                                            @Html.LabelFor(model => model.Admin, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.CheckBoxFor(model => model.Admin)
+                                            @Html.ValidationMessageFor(model => model.Admin, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            @Html.HiddenFor(model => model.Permissao)
+                                            @Html.LabelFor(model => model.Permissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <select class="form-control" id="permissoes" multiple="multiple" onchange="atualizaPermissao()">
+                                                <option value="Atendimento">Atendimento</option>
+                                                <option value="Empresa">Empresa</option>
+                                                <option value="Pagamento">Pagamento</option>
+                                                <option value="Parceiro">Parceiro</option>
+                                                <option value="Rota">Rota</option>
+                                                <option value="Usuario">Usuario</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Gravar" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts {
+    <script>
+
+        function atualizaPermissao() {
+            document.getElementsByName('Permissao')[0].value = $('#permissoes').val().toString();
+        }
+
+        $(document).ready(function () {
+
+            $(".make-pass").attr("type", "password");
+
+            $('#permissoes').select2({
+                theme: "classic"
+            });
+
+        });
+
+    </script>
+}
+
+
+

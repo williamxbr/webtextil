@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WEBTextil.Web.Helpers.CodigoLinha>
+
+@{
+    ViewBag.Title = "Gera";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Gerador de Codigo
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="timeline">
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Tabela
+                                </span>
+                            </li>
+
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <i class="fa fa-envelope bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                        <h3 class="timeline-header">Arquivo:</h3>
+
+                                        <div class="timeline-body">
+                                            <pre>
+                                             @Html.DisplayFor(modelItem => item.Descricao)
+                                         </pre>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

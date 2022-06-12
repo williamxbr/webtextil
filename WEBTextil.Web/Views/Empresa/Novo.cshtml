@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Novo";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>Inserir novo empresa</h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="breadcrumb-item">@Html.ActionLink("Empresa", "Index")</li>
+                        <li class="breadcrumb-item active">Novo</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Novo empresa</h3>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" id="EmpresaId" value="0" />
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <label>Codigo</label>
+                                        <input id="Codigo" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label>Nome</label>
+                                        <input id="Nome" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <label>Ativo</label>
+                                        <input id="Ativo" class="form-control" type="checkbox" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-block" onclick="empresaControle.GravarEmpresa();">Gravar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

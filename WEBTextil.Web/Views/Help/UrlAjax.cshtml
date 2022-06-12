@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WEBTextil.Web.Helpers.CodigoLinha>
+
+@{
+    ViewBag.Title = "UrlAjax";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Lista de Url Ajax
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <pre>
+                        @foreach (var item in Model)
+                        {
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        <br />
+                        }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

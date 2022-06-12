@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Novo";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>Inserir novo rota</h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="breadcrumb-item">@Html.ActionLink("Rota", "Index")</li>
+                        <li class="breadcrumb-item active">Novo</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Novo rota</h3>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" id="RotaId" value="0" />
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-8">
+                                        <label>Descrição</label>
+                                        <input id="Descricao" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Parceiro</label>
+                                        <select id="ParceiroId" class="select2 form-control" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-block" onclick="rotaControle.GravarRota();">Gravar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts {
+    <script>
+
+        $(document).ready(function () {
+            var elem = $("#ParceiroId");
+            parceiroControle.PreencherCombo(elem);
+
+            $('.select2').select2({
+                theme: 'classic'
+            });
+        });
+    </script>
+}
+

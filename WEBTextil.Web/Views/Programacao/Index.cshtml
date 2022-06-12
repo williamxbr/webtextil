@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col">
+                    <h1>
+                        Pagina Inicial
+                    </h1>
+                </div>
+                <div class="col">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            @Html.ActionLink("HOME", "Index", "Home")
+                        </li>
+                        <li class="breadcrumb-item active">Planejamento</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="small-box bg-secondary">
+                        <div class="inner">
+                            <h3>Planejamento</h3>
+                            <p>Planejamento de atendimento por periodo</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-list"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>Programação</h3>
+                            <p>Programação dos atendimentos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-personadd"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>Monitor</h3>
+                            <p>Monitor de acompanhamento dos atendimentos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-personadd"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
