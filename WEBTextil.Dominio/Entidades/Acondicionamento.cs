@@ -1,6 +1,7 @@
-﻿namespace GSM.Dominio.Entidades
+﻿namespace WEBTextil.Dominio.Entidades
 {
-    class Acondicionamento
+    public class Acondicionamento: Entidade
     {
+        public string Descricao { get; set; }
     }
 }

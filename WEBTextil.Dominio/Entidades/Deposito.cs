@@ -1,4 +1,4 @@
-﻿namespace GSM.Dominio.Entidades
+﻿namespace WEBTextil.Dominio.Entidades
 {
     class Deposito
     {
