@@ -1,6 +1,6 @@
 ﻿namespace WEBTextil.Dominio.Entidades
 {
-    class Maquina
+    public class Maquina
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GSM.Dominio.Entidades
 {
-    class Pedido
+    public class Pedido
     {
     }
 }

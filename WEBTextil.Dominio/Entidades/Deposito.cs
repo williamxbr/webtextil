@@ -1,6 +1,6 @@
 ﻿namespace WEBTextil.Dominio.Entidades
 {
-    class Deposito
+    public class Deposito
     {
     }
 }

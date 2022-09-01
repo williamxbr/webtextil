@@ -1,6 +1,6 @@
 ﻿namespace WEBTextil.Dominio.Entidades
 {
-    class UnidadeMedida
+    public class UnidadeMedida
     {
     }
 }

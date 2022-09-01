@@ -1,6 +1,6 @@
 ﻿namespace WEBTextil.Dominio.Entidades
 {
-    class Balanca
+    public class Balanca
     {
     }
 }

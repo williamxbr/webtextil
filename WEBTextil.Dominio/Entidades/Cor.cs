@@ -1,6 +1,6 @@
 ﻿namespace WEBTextil.Dominio.Entidades
 {
-    class Cor
+    public class Cor
     {
     }
 }
